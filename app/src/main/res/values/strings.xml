@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Navigation</string>
+    <string name="s_first_screen_title">HELLO FIRST SCREEN</string>
+    <string name="s_first_screen_button">Go Second Screen</string>
+    <string name="s_second_screen_title">HELLO SECOND SCREEN</string>
+    <string name="s_second_screen_button">Go First Screen</string>
+
+</resources>
