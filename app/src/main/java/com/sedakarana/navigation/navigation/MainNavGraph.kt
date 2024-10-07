@@ -1,9 +1,12 @@
 package com.sedakarana.navigation.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import com.sedakarana.navigation.view.screen.FirstScreen
 import com.sedakarana.navigation.view.screen.SecondScreen
 
@@ -18,8 +21,18 @@ fun MainNavGraph(navController: NavHostController) { //Ekran geçişlerini kontr
             FirstScreen(navController = navController)
         }
 
-        composable(route = Screen.SecondScreen.route) {
-            SecondScreen(navController = navController)
+        composable(route = Screen.SecondScreen.route,
+            arguments = listOf(
+                navArgument("detail") {
+                    type = NavType.StringType
+                }
+            )
+        ) {
+            val detail = remember {
+                it.arguments?.getString("detail")
+            }
+            SecondScreen(navController = navController, detail = detail!!)
         }
+
     }
 }

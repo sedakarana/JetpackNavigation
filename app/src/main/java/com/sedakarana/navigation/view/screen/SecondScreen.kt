@@ -18,21 +18,22 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.sedakarana.navigation.R
-import com.sedakarana.navigation.navigation.Screen
 import com.sedakarana.navigation.ui.theme.ButtonSecondBackColor
 
 @Composable
-fun SecondScreen(navController: NavController) { // NavController parametresi gezinme işlemini yapar.
+fun SecondScreen(navController: NavController, detail: String) { // NavController parametresi gezinme işlemini yapar.
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        Text(text = stringResource(id = R.string.s_second_screen_title), fontSize = 30.sp)
+        Text(text = detail, fontSize = 30.sp)
         Spacer(modifier = Modifier.height(30.dp))
         Button(
-            onClick = { navController.navigate(Screen.FirstScreen.route) },
+            onClick = {
+                navController.popBackStack() // Geri dönmeyi sağlar
+            },
             modifier = Modifier.padding(16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = ButtonSecondBackColor),
             shape = RoundedCornerShape(40.dp)

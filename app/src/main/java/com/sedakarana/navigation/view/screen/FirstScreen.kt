@@ -29,10 +29,14 @@ fun FirstScreen(navController: NavController){ // NavController parametresi gezi
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        var detail= stringResource(id = R.string.s_second_screen_title)
         Text(text = stringResource(id = R.string.s_first_screen_title), fontSize = 30.sp)
         Spacer(modifier = Modifier.height(30.dp))
         Button(
-            onClick = { navController.navigate(Screen.SecondScreen.route) },
+            onClick = { navController.navigate(
+                Screen.SecondScreen.route
+                    .replace("{detail}", detail))
+            },
             modifier = Modifier.padding(16.dp),
             colors = ButtonDefaults.buttonColors(containerColor = ButtonFirstBackColor),
             shape = RoundedCornerShape(40.dp)
